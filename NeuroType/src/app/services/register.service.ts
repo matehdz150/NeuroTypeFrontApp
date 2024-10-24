@@ -14,6 +14,7 @@ export class RegisterService {
   constructor(private httpService: HttpService) {}
 
   register(userData: any) {
+    console.log(this.apiUrl,userData);
     this.httpService.post(this.apiUrl, userData).subscribe(() => {
       this.userRegisteredSubject.next(true);
     });
