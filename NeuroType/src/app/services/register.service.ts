@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { HttpService } from './http.service';
+import { User } from '../types/user';
 
 @Injectable({
   providedIn: 'root'
@@ -13,7 +14,7 @@ export class RegisterService {
 
   constructor(private httpService: HttpService) {}
 
-  register(userData: any) {
+  register(userData: User) {
     console.log(this.apiUrl,userData);
     this.httpService.post(this.apiUrl, userData).subscribe(() => {
       this.userRegisteredSubject.next(true);

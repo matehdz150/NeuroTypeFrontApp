@@ -30,6 +30,7 @@ export class LoginPageComponent implements OnInit{
 
   login(){
     if(this.form.valid){
+      console.log(this.form.getRawValue())
       this.loginService.login(this.form.getRawValue())
     }else{
       console.log('formulario no valido')

@@ -4,6 +4,7 @@ import {FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators} fr
 import { RegisterService } from '../../../services/register.service';
 import { takeUntil } from 'rxjs/operators';
 import { Subject } from 'rxjs';
+import { User } from '../../../types/user';
 
 @Component({
   selector: 'app-register-page',
@@ -61,7 +62,12 @@ export class RegisterPageComponent implements OnInit{
 
   signUp() {
     if (this.form.valid) {
-      this.registerService.register(this.form.getRawValue())
+      const user: User = {
+        name: this.form.get('name')?.value,
+        email: this.form.get('email')?.value,
+        password: this.form.get('password')?.value,
+      };
+      this.registerService.register(user)
     } else {
       console.log('Formulario no válido');
     }
